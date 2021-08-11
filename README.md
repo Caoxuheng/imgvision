@@ -1,2 +1,4 @@
-# imgvision
-A package for image vision
+# Install
+pip install imgvision
+#Author
+Xuheng Cao (caoxuhengcn@gmail.com)

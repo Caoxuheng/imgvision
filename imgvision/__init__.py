@@ -1,4 +1,7 @@
 import numpy as np
+import sys
+
+pat = sys.path[-1]
 
 def downsample(img,scale):
     # img:被下采样图像
@@ -24,7 +27,9 @@ class spectra():
         # self.S_xyz : CIE1964 10deg 下特定光源的刺激值函数。
         # 最后更新：2021年6月25日 曹栩珩
         self.illu = illu
-        path = '.data\\'
+
+
+        path = pat + '\\imgvision\\data\\'
         if illu.upper() =='D65':
             self.S_xyz = np.load(path+'S_xyz_10.npy')
         elif illu.upper() == 'A':

@@ -5,13 +5,16 @@ with open('README.md','r') as fh:
 
 setuptools.setup(
     name='imgvision',
-    version = '0.0.1',
+    version = '0.0.2',
     author = 'Xuheng Cao',
     author_email = 'caoxuhengcn@gmail.com',
     description = 'A package for image vision',
     long_description = description ,
-    url = '',
+    url = 'https://github.com/Caoxuheng/imgvision',
+    classifiers = ['License :: OSI Approved :: MIT License',
+                   ],
+    inculde_package_data = True,
     install_requires = ['numpy'],
-    packages = setuptools.find_packages(),
+    packages =['imgvision'],
 
 )
