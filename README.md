@@ -30,3 +30,23 @@ Out:    (20, 20, 31)
 This function is to convert an RGB image (no matter how is it depth) to the HSV color space.  *hsv2rgb* excutes the contrary operation.  
 >In[4]:&ensp; sample_HSV = iv.color.rgb2hsv(sample_MI)  
 >In[5]: &ensp;sample_RGB =  iv.color.hsv2rgb(sample_HSV)  
+
+## imgvision.distance.cosine()
+Calculate the Cosine Similarity distance between two color images and return a 1-D vector, the vector include the Cosine Similarity distance of each element. This function supports the shape of input as a 2-D matrix (an RGB vector) and a 3-D tensor (a color image).
+
+>In[6]:&ensp;a= np.random.rand(128,128,3)  
+ &emsp; &emsp;&ensp;b= np.random.rand(128,128,3)  
+ &emsp; &emsp;&ensp;dist = iv.distance.cosine(a,b)  
+ &emsp; &emsp;&ensp;print(f'Shape: {dist.shape}\nMean distance: {dist.mean()}')  
+Out:  Shape: (16384,)  
+ &emsp; &emsp;Mean distance: 0.2055142334948004
+ 
+## imgvision.cluster.cosine_predict(img,centre)
+Predict clusters each pixel of a given image belongs to according to Cosine Similarity distance and given cluster center.
+>In[7]:&ensp; img = np.random.rand(128,128,3)
+ &emsp; &emsp;&ensp;centre = np.array([ [0.3,0.5,0.1],  
+  &emsp; &emsp;&ensp;&emsp; &emsp; &emsp; &emsp;[0.8,0.1,0.3] ])
+ &emsp; &emsp;&ensp;cluster_id = cluster.cosine_predict(img,centre)
+ &emsp; &emsp;&ensp;print(cluster_id)
+Out: [1 1 1 ... 1 0 1]
+
