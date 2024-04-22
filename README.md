@@ -50,3 +50,15 @@ Predict clusters each pixel of a given image belongs to according to Cosine Simi
  &emsp; &emsp;&ensp;print(cluster_id)  
 Out: [1 1 1 ... 1 0 1]
 
+## imgvision.spectra_metric()
+The following example shows a quantitative evaluation between a hyperspectral image with 31 bands from 400nm to 700nm and the corresponding reconstructed image.  
+>In[8]:  &ensp;sample_GT = np.random.rand(100,100,31)  
+&emsp;&emsp;&emsp;sample_SI = np.random.rand(100,100,31)  
+&emsp;&emsp;&emsp;Metric = iv.spectra_metric(sample_GT,sample_SI, scale=32)  
+&emsp;&emsp;&emsp;PSNR = Metric.PSNR()  
+&emsp;&emsp;&emsp;SSIM = Metric.SSIM()  
+&emsp;&emsp;&emsp;MSE = Metric.MSE()  
+&emsp;&emsp;&emsp;SAM = Metric.SAM()  
+&emsp;&emsp;&emsp;ERGAS = Metric.ERGAS()    
+&emsp;&emsp;&emsp;print(PSNR,SSIM,MSE,SAM,EGRAS)   
+Out: [7.765805543824359 0.0041294934819296365 0.16728452073841815 41.049350569568816 5.116354915189658]
