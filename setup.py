@@ -5,7 +5,7 @@ with open('README.md','r') as fh:
 
 setuptools.setup(
     name='imgvision',
-    version = '0.1.7.2',
+    version = '0.1.7.3',
     author = 'Xuheng Cao',
     author_email = 'caoxuhengcn@gmail.com',
     description = 'A package for image vision',
