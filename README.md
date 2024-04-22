@@ -60,5 +60,6 @@ The following example shows a quantitative evaluation between a hyperspectral im
 &emsp;&emsp;&emsp;MSE = Metric.MSE()  
 &emsp;&emsp;&emsp;SAM = Metric.SAM()  
 &emsp;&emsp;&emsp;ERGAS = Metric.ERGAS()    
+&emsp;&emsp;&emsp;CC = Metric.CC()    
 &emsp;&emsp;&emsp;print(PSNR,SSIM,MSE,SAM,EGRAS)   
 Out: [7.765805543824359 0.0041294934819296365 0.16728452073841815 41.049350569568816 5.116354915189658]
