@@ -336,6 +336,7 @@ class spectra():
         if xyz == True:
             self.XYZ = img
         else:
+            print(self.S_xyz.shape)
             k = 100 / sum(self.S_xyz[:, 1])
             self.XYZ = k*img @ self.S_xyz
         if space.lower() == 'xyz':
@@ -420,6 +421,9 @@ class spectra():
         else:
             raise AttributeError(f'{space}空间不在预定空间范围内，请联系caoxuhengcn@gmail.com')
 
+
+
+
 class spectra_metric():
     '''
       光谱评价指标 待测图像 x1(shape:[m,n,b]),x2(shape:[m,n,b]);其中m,n为空间分辨率，b为波段数
@@ -441,7 +445,7 @@ class spectra_metric():
                     np.sqrt(np.sum(self.x1_ * self.x1_, axis=-1)) * np.sqrt(np.sum(self.x2_ * self.x2_, axis=-1)))
         _SAM = np.arccos(A) * 180 / np.pi
         if mode == 'mat':
-            return _SAM.reshape(self.info[:-1])
+            return _SAM
         else:
             return np.mean(_SAM)
 
@@ -461,7 +465,7 @@ class spectra_metric():
     def PSNR(self, mode=''):
         _PSNR = 10 * np.log10(np.power(self.max_v, 2) / self.MSE('mat'))
         if mode == 'mat':
-            return _PSNR.reshape(self.info[:-1])
+            return _PSNR
         else:
             return np.mean(_PSNR)
 
@@ -475,27 +479,27 @@ class spectra_metric():
         c1, c2 = pow(k1 * l, 2), pow(k2 * l, 2)
         SSIM = (2 * u1 * u2 + c1) * (2 * sig12 + c2) / ((u1 ** 2 + u2 ** 2 + c1) * (Sig1 ** 2 + Sig2 ** 2 + c2))
         if mode == 'mat':
-            return SSIM.reshape(self.info[:-1])
+            return SSIM
         else:
             return np.mean(SSIM)
 
-    def CC(self,mode=''):
+    def CC(self, mode=''):
         x1_mean = self.x1_.T - self.x1_.mean(-1).T
         x2_mean = self.x2_.T - self.x2_.mean(-1).T
         up = np.sum(x1_mean * x2_mean, axis=0)
         down = np.sqrt(np.power(x1_mean, 2).sum(0) * np.power(x2_mean, 2).sum(0))
         CC = up.T / down.T
         if mode == 'mat':
-            return CC.reshape(self.info[:-1])
+            return CC
         else:
             return np.mean(CC)
 
     def get_Evaluation(self,  k1=0.01, k2=0.03):
-        return self.PSNR(),self.SAM(),self.ERGAS(),self.SSIM(k1=k1, k2=k2),self.MSE()
+        return self.PSNR(),self.SAM(),self.ERGAS(),self.SSIM(k1=k1, k2=k2),self.MSE(),self.CC()
 
     def Evaluation(self,idx=0,k1=0.01,k2=0.03):
-        PSNR,SAM,ERGAS,SSIM,MSE = self.get_Evaluation(k1,k2)
-        print(f'{idx}\t{PSNR}\t{SAM}\t{ERGAS}\t{SSIM}\t{np.sqrt(MSE)}')
+        PSNR,SAM,ERGAS,SSIM,MSE,CC = self.get_Evaluation(k1,k2)
+        print(f'{idx}\t{PSNR}\t{SAM}\t{ERGAS}\t{SSIM}\t{np.sqrt(MSE)}\t{CC}')
 
 class distance():
 
