@@ -1,5 +1,6 @@
 # Install
-pip install imgvision
+pip install imgvision  
+@Zhouhan
 # Author
 Xuheng Cao (caoxuhengcn@gmail.com)
 # Example
