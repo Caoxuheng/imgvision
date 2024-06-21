@@ -3,7 +3,15 @@ pip install imgvision
 
 # Author
 Xuheng Cao (caoxuhengcn@gmail.com)
+# How to use?
+[中文说明-光谱图像评价指标](https://blog.csdn.net/Syuhen/article/details/125424579)  
+[中文说明-图像颜色空间转换](https://blog.csdn.net/Syuhen/article/details/122777454)  
+[中文说明-光谱图像可视化](https://blog.csdn.net/Syuhen/article/details/122761014)  
+
+
+
 # Example
+
 ## imgvision.spectra()
 This Class is to create a standard CIE illuminance for the subsequent operation.  
 >In[1]: &ensp;import numpy as np  
